@@ -6,7 +6,8 @@ import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 import { metaImagesPlugin } from "./vite-plugin-meta-images";
 
 export default defineConfig({
-  base: process.env.GITHUB_ACTIONS === "true" ? "/rural-linkedin/" : "/",
+  base:
+    process.env.GITHUB_ACTIONS === "true" ? "/rural-linkedin/" : "/",
   plugins: [
     react(),
     runtimeErrorOverlay(),
