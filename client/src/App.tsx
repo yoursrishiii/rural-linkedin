@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Router as WouterRouter, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -11,15 +11,20 @@ import Profile from "@/pages/profile";
 import Chat from "@/pages/chat";
 
 function Router() {
+  const basePath =
+    import.meta.env.BASE_URL === "/"
+      ? undefined
+      : import.meta.env.BASE_URL.replace(/\/$/, "");
+
   return (
-    <Switch>
+    <WouterRouter base={basePath}>
       <Route path="/" component={Home} />
       <Route path="/jobs" component={Jobs} />
       <Route path="/community" component={Community} />
       <Route path="/profile" component={Profile} />
       <Route path="/chat" component={Chat} />
       <Route component={NotFound} />
-    </Switch>
+    </WouterRouter>
   );
 }
 
